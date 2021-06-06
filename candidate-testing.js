@@ -27,7 +27,7 @@ function askQuestion() {
 
 for (i = 0; i < questions.length; i++) {
   const input = require('readline-sync');
-  candidateAnswers.push(input.question(questions[i]).toLowerCase())
+  candidateAnswers.push(input.question(questions[i]))
 
 }
 
@@ -49,7 +49,7 @@ for (i = 0; i < candidateAnswers.length; i++) {
   Your answer: ${candidateAnswers[i]}
   Correct Answer: ${correctAnswers[i]}
   `);
-  if (candidateAnswers[i] == correctAnswers[i].toLowerCase()) {
+  if (candidateAnswers[i].toLowerCase() == correctAnswers[i].toLowerCase()) {
     numberCorrect++
   }
 }

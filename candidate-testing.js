@@ -27,7 +27,8 @@ function askQuestion() {
 
 for (i = 0; i < questions.length; i++) {
   const input = require('readline-sync');
-  candidateAnswers.push(input.question(questions[i]))
+  candidateAnswers.push(input.question(questions[i]).toLowerCase())
+
 }
 
 
@@ -37,20 +38,23 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
 
-/*console.log(`Candidate Name: ${candidateName}\n1) ${questions[0]}\nYour answer: ${candidateAnswers[0]}\nCorrect Answer: ${correctAnswers[0]}\n\n2) ${questions[1]}\nYour answer: ${candidateAnswers[1]}\nCorrect Answer: ${correctAnswers[1]}\n\n3) ${questions[2]}\nYour answer: ${candidateAnswers[2]}\nCorrect Answer: ${correctAnswers[2]}\n\n4) ${questions[3]}\nYour answer: ${candidateAnswers[3]}\nCorrect Answer: ${correctAnswers[3]}4) ${questions[3]}\nYour answer: ${candidateAnswers[3]}\nCorrect Answer: ${correctAnswers[3]}`)*/
 console.log(`Your name: ${candidateName}`)
-let grade ;
+
+
+let numberCorrect = 0;
+
+
 for (i = 0; i < candidateAnswers.length; i++) {
   console.log(`${i+1}) ${questions[i]}
   Your answer: ${candidateAnswers[i]}
   Correct Answer: ${correctAnswers[i]}
   `);
+  if (candidateAnswers[i] == correctAnswers[i].toLowerCase()) {
+    numberCorrect++
+  }
 }
 
-
-  
-  
-
+let grade = numberCorrect / questions.length * 100;
   return grade;
 }
 
@@ -61,8 +65,13 @@ function runProgram() {
   console.log("Hello, " + candidateName + "!");
 
   askQuestion();
-  gradeQuiz(this.candidateAnswers);
+
+  
+  console.log(gradeQuiz(this.candidateAnswers));
+  
 }
+
+
 
 
 

@@ -10,7 +10,7 @@ let correctAnswer = "Sally Ride";
 let candidateAnswer = "";
 let questions = ["Who was the first American woman in space?", "True or false: 5 kilometer == 5000 meters?","(5 + 3)/2 * 10 = ?", "Given the array [8, 'Orbit', 'Trajectory', 45], what entry is at index 2?", "What is the minimum crew size for the ISS?" ] ;
 let correctAnswers = ["Sally Ride", "true", "40", "Trajectory", "3"];
-let candidateAnswers = "";
+let candidateAnswers = [];
 
 
 function askForName() {
@@ -27,7 +27,7 @@ function askQuestion() {
 
 for (i = 0; i < questions.length; i++) {
   const input = require('readline-sync');
-  candidateAnswers = input.question(questions[i])
+  candidateAnswers.push(input.question(questions[i]))
 }
 
 
@@ -37,13 +37,21 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly //
 
-console.log(`The correct answer to Q#1 was ${correctAnswers[0]}. You answered ${candidateAnswers}.\nThe correct answer to Q#2 was ${correctAnswers[1]}. You answered ${candidateAnswers}.\nThe correct answer to Q#3 was ${correctAnswers[2]}. You answered ${candidateAnswers}.\nThe correct answer to Q#4 was ${correctAnswers[3]}. You answered ${candidateAnswers}.`)
+/*console.log(`Candidate Name: ${candidateName}\n1) ${questions[0]}\nYour answer: ${candidateAnswers[0]}\nCorrect Answer: ${correctAnswers[0]}\n\n2) ${questions[1]}\nYour answer: ${candidateAnswers[1]}\nCorrect Answer: ${correctAnswers[1]}\n\n3) ${questions[2]}\nYour answer: ${candidateAnswers[2]}\nCorrect Answer: ${correctAnswers[2]}\n\n4) ${questions[3]}\nYour answer: ${candidateAnswers[3]}\nCorrect Answer: ${correctAnswers[3]}4) ${questions[3]}\nYour answer: ${candidateAnswers[3]}\nCorrect Answer: ${correctAnswers[3]}`)*/
+console.log(`Your name: ${candidateName}`)
+let grade ;
+for (i = 0; i < candidateAnswers.length; i++) {
+  console.log(`${i+1}) ${questions[i]}
+  Your answer: ${candidateAnswers[i]}
+  Correct Answer: ${correctAnswers[i]}
+  `);
+}
 
 
-  //let grade;
+  
   
 
-  //return grade;
+  return grade;
 }
 
 function runProgram() {
